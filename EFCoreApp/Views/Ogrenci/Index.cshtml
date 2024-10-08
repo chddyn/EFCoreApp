@@ -1,54 +1,42 @@
-﻿@model IEnumerable<EFCoreApp.Data.Ogrenci>
+﻿@model IEnumerable<Ogrenci>
 
-@{
-    ViewData["Title"] = "Index";
-}
 
-<h1>Index</h1>
+    <h2>Öğrenci Listesi</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<a href="/Ogrenci/Create" class="btn mb-3 btn-primary">Öğrenci Ekle</a
+        <hr>
+
+<table class="table table-bordered">
+
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OgrenciAd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OgrenciSoyad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Eposta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefon)
-            </th>
-            <th></th>
+            <th style="width:150px;">@Html.DisplayNameFor(m => m.Id)</th>
+            <th>@Html.DisplayNameFor(m => m.OgrenciAd)</th>
+            <th>@Html.DisplayNameFor(m => m.OgrenciSoyad)</th>
+            <th style="width:150px;"></th>
         </tr>
     </thead>
+
+
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
+
+                <td>@Html.DisplayFor(modelItem=>item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.OgrenciAd)</td>
+                <td>@Html.DisplayFor(modelItem => item.OgrenciSoyad)</td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.OgrenciAd)
+
+                    <a asp-controller="Ogrenci" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Güncelle</a>
+                    <a  asp-controller="Ogrenci" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OgrenciSoyad)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Eposta)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefon)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
+
+
             </tr>
         }
     </tbody>
 </table>
+
+
+
