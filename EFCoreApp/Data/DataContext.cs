@@ -12,6 +12,7 @@ namespace EFCoreApp.Data
         public DbSet<Kurs> Kurslar { get; set; } = null!;
         public DbSet<Ogrenci> Ogrenciler => Set<Ogrenci>(); // yukardaki notnull ile aynı görevi görür
         public DbSet<KursKayit> KursKayitlari { get; set; } = null!;
+        public DbSet<Ogretmen> Ogretmenler { get; set; } = null!;
 
     }
 }

@@ -40,7 +40,9 @@ namespace EFCoreApp.Controllers
             {
                 return NotFound();
             }
-            var ogrencı = await _context.Ogrenciler.FindAsync(id);
+            var ogrencı = await _context.Ogrenciler.Include(m=>m.kursKayitlari)
+                .ThenInclude(o=>o.Kurs) // önce öğrencileri include eder sonra öğrencilere göre kursu include eder normal include hata verir
+                .FirstOrDefaultAsync(x=>x.Id==id);
 
             if (ogrencı == null)
             {

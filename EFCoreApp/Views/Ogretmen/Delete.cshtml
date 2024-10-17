@@ -1,0 +1,52 @@
+﻿@model EFCoreApp.Data.Ogretmen
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Ogretmen</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ogretmenAd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ogretmenAd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ogretmenSoyd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ogretmenSoyd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ogretmenMail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ogretmenMail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ogretmenTel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ogretmenTel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BaslamaTarihi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BaslamaTarihi)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

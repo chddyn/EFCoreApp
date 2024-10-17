@@ -1,17 +1,42 @@
-﻿@model Kurs
+﻿@model KursViewModel
 
 <h2>Kurs Güncelle</h2>
 <hr />
-<form asp-controller="Kurs" asp-action="Edit" method="post">
-    <input type="hidden" asp-for="Id" />
-    <div class="mb-3">
-        <label asp-for="Baslik" class="form-label"> Kurs Adı</label>
-        <input asp-for="Baslik" class="form-control">
+<div class="row">
+
+    <div class="col-8">
+
+        <form asp-controller="Kurs" asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <label asp-for="Baslik" class="form-label"> Kurs Adı</label>
+                <input asp-for="Baslik" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="ogretmenId" class="form-label"> Öğretmen</label>
+                <select asp-for="ogretmenId" asp-items="ViewBag.Ogretmenler" class="form-select">
+                    <option value="">Öğretmen Seçiniz...</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+
     </div>
 
+    <div class="col-4">
+        <h4>Öğrenciler</h4>
+        <hr />
+        <ul>
+            @foreach (var item in Model.kursKayitlari)
+            {
+                <li>@item.Ogrenci.AdSoyad</li>
+            }
 
-    <button type="submit" class="btn btn-primary">Kaydet</button>
-</form>
+        </ul>
+    </div>
+
+</div>
 
 
 
